@@ -13,7 +13,7 @@ migrate_working_dir/
 
 
 # secrets
-/config
+config
 
 
 # IntelliJ related
