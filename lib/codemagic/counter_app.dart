@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'utils/config_reader.dart';
 
 class CodeMagicCounter extends StatefulWidget {
   const CodeMagicCounter({super.key});
 
   @override
-  State<CodeMagicCounter> createState() => _MyHomePageState();
+  State<CodeMagicCounter> createState() => _CodeMagicCounterState();
 }
 
-class _MyHomePageState extends State<CodeMagicCounter> {
+class _CodeMagicCounterState extends State<CodeMagicCounter> {
   int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      _counter += ConfigReader.getIncrementAmount();
     });
   }
 
@@ -20,7 +21,7 @@ class _MyHomePageState extends State<CodeMagicCounter> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // backgroundColor: Theme.of(context).colorScheme.primary,
         title: const Text('CodeMagic'),
       ),
       body: Center(
@@ -34,9 +35,8 @@ class _MyHomePageState extends State<CodeMagicCounter> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-
             Text(
-              'Secret: ',
+              'Secret: ${ConfigReader.getSecretKey()}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
